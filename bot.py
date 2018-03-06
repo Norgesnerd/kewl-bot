@@ -20,7 +20,7 @@ async def boi(ctx):
 @bot.command()
 async def commands():
     embed=discord.Embed(title="Commands", color=0x0ff3ff)
-    embed.add_field(name="Just about everything", value="boi, commands, deletdis [msg], doge, echo [msg], memelicious [msg], ping, react, bot_space [msg], space [msg]", inline=False)
+    embed.add_field(name="Just about everything", value="boi, commands, deletdis [msg], doge, dothething, echo [msg], memelicious [msg], ping, react, bot_space [msg], space [msg]", inline=False)
     await bot.say(embed=embed)
 
 @bot.command(pass_context=True)
