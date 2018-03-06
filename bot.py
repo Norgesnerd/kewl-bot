@@ -91,4 +91,4 @@ async def space(ctx, *, message: str):
 
 
 
-bot.run("NDE4NTQwOTYxNzk1Mjc2ODAx.DXjGQg.Fq5BjMeP6KY55LPB_Q_2EtgGJag")
+bot.run(token)
