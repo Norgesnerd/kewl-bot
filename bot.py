@@ -2,8 +2,8 @@ import discord, asyncio
 from discord.ext import commands
 from discord.ext.commands import *
 
-http = discord.http
 bot = commands.Bot(command_prefix='¤')
+bot.remove_command('help')
 
 @bot.event
 async def on_ready():
@@ -16,6 +16,12 @@ async def on_ready():
 async def boi(ctx):
     await bot.delete_message(ctx.message)
     await bot.say('🅱oi')
+
+@bot.command()
+async def commands():
+    embed=discord.Embed(title="Commands", color=0x0ff3ff)
+    embed.add_field(name="Just about everything", value="boi, commands, deletdis [msg], doge, echo [msg], memelicious [msg], ping, react, bot_space [msg], space [msg]", inline=False)
+    await bot.say(embed=embed)
 
 @bot.command(pass_context=True)
 async def deletdis(ctx):
@@ -30,13 +36,25 @@ async def deletdis(ctx):
 
 @bot.command()
 async def doge():
-    embed = discord.Embed()
+    embed = discord.Embed(color = 0xffde78)
     embed.set_image(url='http://i0.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg')
     await bot.say(embed=embed)
 
 @bot.command()
 async def echo(message: str):
     await bot.say(message)
+
+@bot.command(name='help')
+async def _help():
+    await bot.say('***HALP IZ DED***')
+    await bot.say('***HALP URSLEF***')
+    await bot.say('*(or use ¤commands idc)*')
+
+@bot.command(pass_context=True)
+async def memelicious(ctx, *, message: str):
+    await bot.delete_message(ctx.message)
+    msg = message.replace("", " ")
+    await bot.say("***" + msg.upper() + "***")
 
 @bot.command()
 async def ping():
