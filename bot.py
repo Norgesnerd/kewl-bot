@@ -91,8 +91,4 @@ async def space(ctx, *, message: str):
 
 
 
-<<<<<<< HEAD
 bot.run(config.token)
-=======
-bot.run(token)
->>>>>>> 160d81c9961711cb82fe6491ecfb9c19900e388c
