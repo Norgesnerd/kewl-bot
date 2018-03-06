@@ -59,7 +59,7 @@ async def _help():
 async def memelicious(ctx, *, message: str):
     await bot.delete_message(ctx.message)
     msg = message.replace("", " ")
-    await bot.say("***" + msg.upper() + "***")
+    await bot.say("***" + msg.upper().strip(' ') + "***")
 
 @bot.command()
 async def ping():
