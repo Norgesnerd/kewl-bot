@@ -41,6 +41,11 @@ async def doge():
     await bot.say(embed=embed)
 
 @bot.command()
+async def dothething():
+    await bot.say('*tips fedora*')
+    await bot.say("***M ' L A D Y***")
+
+@bot.command()
 async def echo(message: str):
     await bot.say(message)
 
