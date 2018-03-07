@@ -1,4 +1,4 @@
-import aiohttp, asyncio, config, discord
+import asyncio, config, discord
 from discord.ext import commands
 from discord.ext.commands import *
 
@@ -20,7 +20,7 @@ async def boi(ctx):
 @bot.command()
 async def commands():
     embed=discord.Embed(title="Commands", color=0x0ff3ff)
-    embed.add_field(name="Just about everything", value="boi, commands, deletdis [msg], doge, dothething, echo [msg], help, memelicious [msg], ping, randomdoge, react, bot_space [msg], space [msg]", inline=False)
+    embed.add_field(name="Just about everything", value="boi, commands, deletdis [msg], doge, dothething, echo [msg], memelicious [msg], ping, react, bot_space [msg], space [msg]", inline=False)
     await bot.say(embed=embed)
 
 @bot.command(pass_context=True)
@@ -48,14 +48,6 @@ async def dothething():
 @bot.command()
 async def echo(message: str):
     await bot.say(message)
-
-@bot.command(pass_context=True)
-async def randomdoge(ctx):
-    async with aiohttp.get('https://random.dog/woof.json') as s:
-        if s.status == 200:
-            js = await s.json()
-            embed = discord.Embed.set_image(js['file'])
-            await bot.say(embed=embed)
 
 @bot.command(name='help')
 async def _help():
