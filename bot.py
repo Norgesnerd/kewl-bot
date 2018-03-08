@@ -1,9 +1,14 @@
-import asyncio, config, discord
+import aiohttp, asyncio, async_timeout, config, discord
 from discord.ext import commands
 from discord.ext.commands import *
 
 bot = commands.Bot(command_prefix='¤')
 bot.remove_command('help')
+
+async def fetch(session, url):
+    async with async_timeout.timeout(10):
+        async with session.get(url) as response:
+            return await response.json()
 
 @bot.event
 async def on_ready():
@@ -39,6 +44,13 @@ async def doge():
     embed = discord.Embed(color = 0xffde78)
     embed.set_image(url='http://i0.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg')
     await bot.say(embed=embed)
+
+@bot.command()
+async def randomdoge():
+    async with aiohttp.ClientSession() as session:
+        json = await fetch(session, 'http://random.dog/woof.json')
+        embed = discord.Embed()
+        await bot.say(embed=embed.set_image(url=json['url']))
 
 @bot.command()
 async def dothething():
